@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="calculatorService" class="org.example.CalculatorService">
+    </bean>
+
+    <bean id="gestorFactura" class="org.example.GestorFactura">
+        <constructor-arg name="calculatorService" ref="calculatorService"/>
+        <constructor-arg name="name" value="factura 1234567890"/>
+    </bean>
+
+</beans>
