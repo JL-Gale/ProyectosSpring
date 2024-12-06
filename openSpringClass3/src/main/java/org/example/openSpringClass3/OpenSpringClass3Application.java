@@ -12,5 +12,9 @@ public class OpenSpringClass3Application {
 		ApplicationContext context = SpringApplication.run(OpenSpringClass3Application.class, args);
 		CarRepository carRepository = context.getBean(CarRepository.class);
 		System.out.println(carRepository.count());
+
+		carRepository.save(new Car(null, 1999, "Supra", "Toyota"));
+		System.out.println(carRepository.count());
+		System.out.println(carRepository.findAll());
 	}
 }
