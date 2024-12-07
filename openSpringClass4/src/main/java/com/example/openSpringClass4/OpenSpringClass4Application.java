@@ -16,7 +16,7 @@ public class OpenSpringClass4Application {
 		ApplicationContext context = SpringApplication.run(OpenSpringClass4Application.class, args);
 		BookRepository bookRepository = context.getBean(BookRepository.class);
 		BookController bookController = new BookController(bookRepository);
-		bookController.saveBook(new Book (null, "Las milgroserias", "Desconocido", LocalDate.now(), 100, 120D, true));
+		//bookController.saveBook(new Book (null, "Las milgroserias", "Desconocido", LocalDate.now(), 100, 120D, true));
 		System.out.println(bookRepository.count());
 	}
 }

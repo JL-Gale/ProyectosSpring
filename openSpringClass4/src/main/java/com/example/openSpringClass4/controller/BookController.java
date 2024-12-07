@@ -18,7 +18,7 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    
+
     // Buscar todos los libros (Lista de libros)
     @GetMapping("/api/books")
     public List<Book> findBookAl() {
