@@ -78,5 +78,18 @@ public class BookController {
     }
 
     //Borrar todos los libros
+    @DeleteMapping("/booksdall")
+    public ResponseEntity<Book> deleteAll(@RequestBody Book book) {
+        if (book.getId() == null) {
+            log.warn("trying to delate a not existent book");
+            return ResponseEntity.badRequest().build();
+        }
+        if(!bookRepository.existsById(book.getId())) {
+            log.warn("trying to update a not existent book");
+            return ResponseEntity.notFound().build();
+        }
+        bookRepository.deleteAll();
+        return ResponseEntity.ok().build();
+    }
 
 }
