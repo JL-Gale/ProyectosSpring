@@ -9,7 +9,7 @@
 <h1 th:texto="${textoh1}">Lista de usuarios</h1>
 <div th:if="${users.isEmpty()}" th:text="${'No tiene elementos'}"></div>
 
-<table>
+<table th:if="${not users.isEmpty()}">
     <thead>
     <tr>
         <th>Nombres</th>
