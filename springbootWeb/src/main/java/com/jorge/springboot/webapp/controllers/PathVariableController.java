@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,12 +16,27 @@ public class PathVariableController {
 
     @Value("${config.username}")
     private String username;
+
 //    @Value("${config.message}")
 //    private String message;
+
     @Value("${config.code}")
     private Integer code;
+
+//    @Value("${config.listOfValues}")
+//    private String[] listOfValus;
+
     @Value("${config.listOfValues}")
-    private String[] listOfValus;
+    private List<String> listOfValus;
+
+    @Value("#{ '${config.listOfValues}'.toUpperCase().split(',')}")
+    private List<String> valuesList;
+
+    @Value("#{ '${config.listOfValues}'.toUpperCase()}")
+    private String valuesString;
+
+    @Value("#{ ${config.valuesMap}}")
+    public Map<String, Object> valuesmMap;
 
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message){
@@ -58,6 +74,14 @@ public class PathVariableController {
         body.put("Message", message);
         body.put("Code", this.code);
         body.put("ListOfValues", this.listOfValus);
+        body.put("ValuesList", valuesList);
+        body.put("Values String",valuesString);
+        body.put("Values Map", valuesmMap);
         return body;
+    }
+
+    @GetMapping("/valuesmap")
+    public Map valuesMap(@Value("#{ ${config.valuesMap}}") Map<String, Object> valuesmMap){
+        return valuesmMap;
     }
 }
