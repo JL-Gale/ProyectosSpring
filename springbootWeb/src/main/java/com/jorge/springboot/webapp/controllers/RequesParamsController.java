@@ -31,10 +31,9 @@ public class RequesParamsController {
     }
 
     @GetMapping("/barParam")
-    public ParamMixDto barParamMixDto(@RequestParam(required = false) String message, @RequestParam Integer code){
+    public ParamMixDto barParamMixDto(@RequestParam String message, @RequestParam Integer code){
         ParamMixDto paramMixDto = new ParamMixDto();
         paramMixDto.setMessage(message);
-        paramMixDto.setCode(code);
         return paramMixDto;
     }
 
