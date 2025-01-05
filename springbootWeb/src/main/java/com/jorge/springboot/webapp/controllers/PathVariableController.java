@@ -29,7 +29,7 @@ public class PathVariableController {
     @Value("${config.listOfValues}")
     private List<String> listOfValus;
 
-    @Value("#{ '${config.listOfValues}'.toUpperCase().split(',')}")
+    @Value("#{'${config.listOfValues}'.toUpperCase().split(',')}")
     private List<String> valuesList;
 
     @Value("#{ '${config.listOfValues}'.toUpperCase()}")
@@ -37,6 +37,12 @@ public class PathVariableController {
 
     @Value("#{ ${config.valuesMap}}")
     public Map<String, Object> valuesmMap;
+
+    @Value("#{${config.valuesMap}.price}")
+    private Integer price;
+
+    @Value("#{${config.valuesMap}.details}")
+    private String details;
 
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message){
@@ -74,14 +80,30 @@ public class PathVariableController {
         body.put("Message", message);
         body.put("Code", this.code);
         body.put("ListOfValues", this.listOfValus);
-        body.put("ValuesList", valuesList);
-        body.put("Values String",valuesString);
-        body.put("Values Map", valuesmMap);
+        body.put("ValuesList", this.valuesList);
+        body.put("Values String",this.valuesString);
+        body.put("Values Map", this.valuesmMap);
         return body;
     }
 
     @GetMapping("/valuesmap")
     public Map valuesMap(@Value("#{ ${config.valuesMap}}") Map<String, Object> valuesmMap){
         return valuesmMap;
+    }
+
+
+    @GetMapping("/valuesmap/details")
+    public Map details(){
+        Map<String, Object> body = new HashMap<>();
+        body.put("Details", this.details);
+        return body;
+    }
+
+
+    @GetMapping("/valuesmap /price")
+    public Map price(){
+        Map<String, Object> body = new HashMap<>();
+        body.put("Price", this.price);
+        return body;
     }
 }
