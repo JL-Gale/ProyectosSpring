@@ -3,7 +3,9 @@ package com.jorge.springboot.webapp.controllers;
 import com.jorge.springboot.webapp.model.dto.ParamDto;
 import com.jorge.springboot.webapp.model.dto.ParamMixDto;
 import com.jorge.springboot.webapp.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -44,6 +46,9 @@ public class PathVariableController {
     @Value("#{${config.valuesMap}.details}")
     private String details;
 
+    @Autowired
+    private Environment environment;
+
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message){
         ParamDto paramDto = new ParamDto();
@@ -78,7 +83,11 @@ public class PathVariableController {
         Map<String, Object> body = new HashMap<>();
         body.put("User Name", this.username);
         body.put("Message", message);
+        body.put("Message 2:", environment.getProperty("config.message"));
         body.put("Code", this.code);
+        body.put("code 2", environment.getProperty("config.code"));
+        body.put("code 3", Integer.valueOf(environment.getProperty("config.code")));
+        body.put("code 4", environment.getProperty("config.code", Integer.class));
         body.put("ListOfValues", this.listOfValus);
         body.put("ValuesList", this.valuesList);
         body.put("Values String",this.valuesString);
@@ -106,4 +115,5 @@ public class PathVariableController {
         body.put("Price", this.price);
         return body;
     }
+
 }
