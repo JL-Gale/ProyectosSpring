@@ -10,8 +10,12 @@ import java.util.List;
 @Component
 public class ProductServiceImpl implements IProductService{
 
-    @Autowired
     private IProductRepository repository;
+
+    @Autowired
+    public ProductServiceImpl(IProductRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Product> finAll() {
@@ -34,5 +38,12 @@ public class ProductServiceImpl implements IProductService{
     public Product finById(Long id) {
         return repository.findById(id);
     }
+
+    //La inyeccion de depentencias puede hacer por parametro, constructor o setter
+//    @Autowired
+//    public void setRepository(IProductRepository repository) {
+//        this.repository = repository;
+//    }
+
 
 }

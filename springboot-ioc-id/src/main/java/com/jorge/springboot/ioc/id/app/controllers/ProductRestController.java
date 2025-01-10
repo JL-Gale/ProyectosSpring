@@ -19,8 +19,12 @@ import java.util.Map;
 @RequestMapping("/api/product")
 public class ProductRestController {
 
-    @Autowired
     private IProductService productService;
+
+    @Autowired
+    public ProductRestController(IProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/test/{id}")
     public Map test(@PathVariable Long id) {
@@ -35,4 +39,11 @@ public class ProductRestController {
         body.put("lista de Productos", productService.finAll());
         return body;
     }
+
+    //La inyeccion de depentencias puede hacer por paramaetro, constructor o setter
+//    @Autowired
+//    public void setProductService(IProductService productService) {
+//        this.productService = productService;
+//    }
+
 }
