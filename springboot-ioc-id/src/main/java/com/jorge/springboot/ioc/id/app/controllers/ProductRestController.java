@@ -5,6 +5,7 @@ import com.jorge.springboot.ioc.id.app.models.Product;
 
 import com.jorge.springboot.ioc.id.app.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class ProductRestController {
     private IProductService productService;
 
     @Autowired
-    public ProductRestController(IProductService productService) {
+    public ProductRestController(@Qualifier("test") IProductService productService) {
         this.productService = productService;
     }
 

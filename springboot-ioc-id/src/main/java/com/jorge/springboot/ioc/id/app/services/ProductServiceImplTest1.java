@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("test")
 public class ProductServiceImplTest1 implements IProductService{
 
     private IProductRepository repository;
