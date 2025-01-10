@@ -2,7 +2,10 @@ package com.jorge.springboot.ioc.id.app.controllers;
 
 
 import com.jorge.springboot.ioc.id.app.models.Product;
+
+import com.jorge.springboot.ioc.id.app.services.IProductService;
 import com.jorge.springboot.ioc.id.app.services.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,8 @@ import java.util.Map;
 @RequestMapping("/api/product")
 public class ProductRestController {
 
-    ProductServiceImpl productService = new ProductServiceImpl();
+    @Autowired
+    private IProductService productService;
 
     @GetMapping("/test/{id}")
     public Map test(@PathVariable Long id) {

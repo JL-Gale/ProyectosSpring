@@ -1,13 +1,17 @@
 package com.jorge.springboot.ioc.id.app.services;
 
 import com.jorge.springboot.ioc.id.app.models.Product;
-import com.jorge.springboot.ioc.id.app.repositories.ProductRepositoryImpl;
+import com.jorge.springboot.ioc.id.app.repositories.IProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ProductServiceImpl implements IProductService{
 
-    private ProductRepositoryImpl repository = new ProductRepositoryImpl();
+    @Autowired
+    private IProductRepository repository;
 
     @Override
     public List<Product> finAll() {
