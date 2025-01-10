@@ -3,6 +3,8 @@ package com.jorge.springboot.ioc.id.app.services;
 import com.jorge.springboot.ioc.id.app.models.Product;
 import com.jorge.springboot.ioc.id.app.repositories.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
 public class ProductServiceImplTest1 implements IProductService{
 
     private IProductRepository repository;
+    @Autowired
+    private Environment environment;
 
     @Autowired
     public ProductServiceImplTest1(IProductRepository repository) {
@@ -28,7 +32,7 @@ public class ProductServiceImplTest1 implements IProductService{
 //                    Product product = new Product(s.getId(), s.getName(), s.getPrice());
 
                     Product product = (Product) s.clone();
-                    product.setPrice(product.getPrice() + ((long)(product.getPrice() * 0.19)));
+                    product.setPrice(product.getPrice() + ((long)(product.getPrice() * environment.getProperty("config.iva", Double.class))));
                     return product;
                 })
                 .toList();
