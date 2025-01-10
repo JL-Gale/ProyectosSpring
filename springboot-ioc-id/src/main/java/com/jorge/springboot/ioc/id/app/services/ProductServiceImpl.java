@@ -4,10 +4,11 @@ import com.jorge.springboot.ioc.id.app.models.Product;
 import com.jorge.springboot.ioc.id.app.repositories.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class ProductServiceImpl implements IProductService{
 
     private IProductRepository repository;
