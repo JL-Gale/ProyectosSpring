@@ -4,7 +4,6 @@ package com.jorge.springboot.ioc.id.app.controllers;
 import com.jorge.springboot.ioc.id.app.models.Product;
 
 import com.jorge.springboot.ioc.id.app.services.IProductService;
-import com.jorge.springboot.ioc.id.app.services.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,4 +45,8 @@ public class ProductRestController {
 //        this.productService = productService;
 //    }
 
+//    @GetMapping("/single")
+//    public List<Product> getSingle(){
+//        return productService.getSingle();
+//    }
 }

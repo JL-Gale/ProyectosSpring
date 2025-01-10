@@ -3,19 +3,17 @@ package com.jorge.springboot.ioc.id.app.services;
 import com.jorge.springboot.ioc.id.app.models.Product;
 import com.jorge.springboot.ioc.id.app.repositories.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Primary
 @Service
-public class ProductServiceImpl implements IProductService{
+public class ProductServiceImplTest1 implements IProductService{
 
     private IProductRepository repository;
 
     @Autowired
-    public ProductServiceImpl(IProductRepository repository) {
+    public ProductServiceImplTest1(IProductRepository repository) {
         this.repository = repository;
     }
 
@@ -46,5 +44,4 @@ public class ProductServiceImpl implements IProductService{
 //    public void setRepository(IProductRepository repository) {
 //        this.repository = repository;
 //    }
-
 }

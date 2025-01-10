@@ -1,7 +1,6 @@
 package com.jorge.springboot.ioc.id.app.repositories;
 
 import com.jorge.springboot.ioc.id.app.models.Product;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
