@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Primary
 @Service
+@Primary
 public class ProductServiceImpl implements IProductService{
 
     private IProductRepository repository;

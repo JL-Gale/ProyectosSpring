@@ -2,11 +2,13 @@ package com.jorge.springboot.ioc.id.app.repositories;
 
 import com.jorge.springboot.ioc.id.app.models.Product;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Repository
+@RequestScope
 public class ProductRepositoryImpl implements IProductRepository{
 
     private List<Product> data;
