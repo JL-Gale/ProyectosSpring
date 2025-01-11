@@ -25,14 +25,15 @@ public class ProductServiceImplTest1 implements IProductService{
     public List<Product> finAll() {
         return repository.findAll().stream()
                 .map(s -> {
+//                    Product product = (Product) s.clone();
+//                    product.setPrice(product.getPrice() + ((long)(product.getPrice() * environment.getProperty("config.iva", Double.class))));
+//                    return product;
+
 //                    ProductDto productDto = new ProductDto(s.getName(), s.getPrice());
 //                    productDto.setPrice(s.getPrice() + ((long) (s.getPrice() * 0.19)));
 //                    return productDto;
 
 //                    Product product = new Product(s.getId(), s.getName(), s.getPrice());
-
-//                    Product product = (Product) s.clone();
-//                    product.setPrice(product.getPrice() + ((long)(product.getPrice() * environment.getProperty("config.iva", Double.class))));
 
                     s.setPrice(s.getPrice() + ((long)(s.getPrice() * environment.getProperty("config.iva", Double.class))));
                     return s;
