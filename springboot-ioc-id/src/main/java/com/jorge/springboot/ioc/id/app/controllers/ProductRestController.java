@@ -34,10 +34,8 @@ public class ProductRestController {
     }
 
     @GetMapping("/test")
-    public Map test2() {
-        Map<String, List<Product>> body = new HashMap<>();
-        body.put("lista de Productos", productService.finAll());
-        return body;
+    public List<Product> test2() {
+        return productService.finAll();
     }
 
     //La inyeccion de depentencias puede hacer por paramaetro, constructor o setter

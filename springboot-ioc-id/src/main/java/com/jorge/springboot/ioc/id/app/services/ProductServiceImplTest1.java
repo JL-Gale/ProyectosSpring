@@ -17,7 +17,7 @@ public class ProductServiceImplTest1 implements IProductService{
     private Environment environment;
 
     @Autowired
-    public ProductServiceImplTest1(@Qualifier("productRepositoryImpl") IProductRepository repository) {
+    public ProductServiceImplTest1(@Qualifier("productRepositoryImplJson") IProductRepository repository) {
         this.repository = repository;
     }
 

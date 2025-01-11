@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Arroz json",
+    "price": 4956
+  },
+  {
+    "id": 2,
+    "name": "Caffe json",
+    "price": 1416
+  },
+  {
+    "id": 3,
+    "name": "Panela josn",
+    "price": 2832
+  },
+  {
+    "id": 4,
+    "name": "Huevos json",
+    "price": 1274
+  },
+  {
+    "id": 5,
+    "name": "Platanos josn",
+    "price": 991
+  }
+]
