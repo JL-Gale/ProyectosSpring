@@ -39,4 +39,20 @@ public class Invoice {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public int getTotal() {
+        List<Integer> list = items.stream()
+                .map(Item::getTotal)
+                .toList();
+        var total = 0;
+        for (Integer i : list) {
+            total += i;
+        }
+        return total;
+//        var nuemroTotal = 0;
+//        for (Item item : this.items) {
+//            nuemroTotal += item.getTotal();
+//        }
+//        return nuemroTotal;
+    }
 }
