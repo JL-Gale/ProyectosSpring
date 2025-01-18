@@ -1,6 +1,7 @@
 package com.jorge.springboot.factura.app.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +12,10 @@ public class Invoice {
 
     @Autowired
     private Client client;
-    @Value("${invoice.description}")
+    @Value("${invoice.description2}")
     private String description;
     @Autowired
+    @Qualifier("NameOfBean")
     private List<Item> items;
 
     public Client getClient() {
@@ -41,14 +43,18 @@ public class Invoice {
     }
 
     public int getTotal() {
-        List<Integer> list = items.stream()
+        return items.stream()
                 .map(Item::getTotal)
-                .toList();
-        var total = 0;
-        for (Integer i : list) {
-            total += i;
-        }
-        return total;
+                .reduce(0, (sum, total2) -> sum + total2);
+
+//        List<Integer> list = items.stream()
+//                .map(Item::getTotal)
+//                .toList();
+//        var total = 0;
+//        for (Integer i : list) {
+//            total += i;
+//        }
+//        return total;
 //        var nuemroTotal = 0;
 //        for (Item item : this.items) {
 //            nuemroTotal += item.getTotal();

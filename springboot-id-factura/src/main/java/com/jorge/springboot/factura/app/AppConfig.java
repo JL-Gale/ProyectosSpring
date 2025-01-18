@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -28,5 +27,16 @@ public class AppConfig {
                 new Item(new Product("Ar 15", 7500), 1),
                 new Item(new Product("Revolver 38", 900), 1),
                 new Item(new Product("Glock 19", 2100), 2));
+    }
+
+    //@Primary
+    //@Bean("NameOfBean")
+    @Bean
+    public List<Item> listaDeItems2(){
+        return List.of(
+                new Item(new Product("Glock 17 - 2", 1700), 2),
+                new Item(new Product("Ar 15 - 2", 7500), 1),
+                new Item(new Product("Revolver 38 - 2", 900), 1),
+                new Item(new Product("Glock 19 - 2", 2100), 2));
     }
 }
