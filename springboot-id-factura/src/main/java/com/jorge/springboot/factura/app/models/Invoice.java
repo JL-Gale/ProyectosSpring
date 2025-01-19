@@ -1,5 +1,6 @@
 package com.jorge.springboot.factura.app.models;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,8 +16,13 @@ public class Invoice {
     @Value("${invoice.description2}")
     private String description;
     @Autowired
-    @Qualifier("NameOfBean")
+    @Qualifier("listaDeItems2")
     private List<Item> items;
+
+    @PostConstruct
+    public void init() {
+        this.client.setName(client.getName().concat(" Luis"));
+    }
 
     public Client getClient() {
         return client;
