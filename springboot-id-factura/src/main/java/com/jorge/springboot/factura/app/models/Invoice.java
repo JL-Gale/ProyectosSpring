@@ -1,6 +1,7 @@
 package com.jorge.springboot.factura.app.models;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,11 @@ public class Invoice {
     @PostConstruct
     public void init() {
         this.client.setName(client.getName().concat(" Luis"));
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("Destruyendo bean");
     }
 
     public Client getClient() {
